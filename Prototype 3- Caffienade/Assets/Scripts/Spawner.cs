@@ -4,38 +4,29 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public Wave[] waves;
-    public GameObject customer;
+    private float nextSpawnTime;
 
-    Wave currentWave;
-    int currentWaveNumber;
+    [SerializeField]
+    private GameObject customerPrefab;
+    [SerializeField]
+    private float spawnDelay = 5;
 
-    int customerRemainingToSpawn;
-    float nextSpawnTime;
-
-    void Update()
+    private void Update()
     {
-        if (customerRemainingToSpawn > 0 && Time.time > nextSpawnTime)
+        if (ShouldSpawn())
         {
-            customerRemainingToSpawn--;
-            nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
-
-            GameObject spawnedCustomer = Instantiate(customer, Vector3.zero, Quaternion.identity) as GameObject;
+            Spawn();
         }
     }
 
-    void NextWave()
+    private void Spawn()
     {
-        currentWaveNumber ++;
-        currentWave = waves[currentWaveNumber - 1];
-
-        customerRemainingToSpawn = currentWave.CustomerCount;
+        nextSpawnTime = Time.time + spawnDelay;
+        Instantiate(customerPrefab, transform.position, transform.rotation);
     }
 
-    [System.Serializable]
-    public class Wave
+    private bool ShouldSpawn()
     {
-        public int CustomerCount;
-        public float timeBetweenSpawns;
+        return Time.time >= nextSpawnTime;
     }
 }
