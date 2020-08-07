@@ -1,45 +1,51 @@
-﻿using UnityEngine.Audio;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //all the sound effects except background music
 
-    public Sound[] sounds;
+    /*
 
-    public static AudioManager instance;
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
-        DontDestroyOnLoad(gameObject);
-        
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
-    }
-
+    public static AudioClip timerSound, floorClip, clickTwo, floorBall, clickOne, giggles;
+    static AudioSource beep;
     void Start()
     {
-        Play("MenuMusic");
+        timerSound = Resources.Load<AudioClip>("Alarm");
+        floorClip = Resources.Load<AudioClip>("floor");
+        clickTwo = Resources.Load<AudioClip>("click2");
+        clickOne = Resources.Load<AudioClip>("click1");
+        floorBall = Resources.Load<AudioClip>("ball");
+
+        beep = GetComponent<AudioSource>();
     }
 
-    public void Play (string name)
+    public static void PlaySound(string clip)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-    }
+        switch (clip)
+        {
+            case "Alarm":
+                beep.PlayOneShot(timerSound);
+                break;
+
+            case "floor":
+                beep.PlayOneShot(floorClip);
+                break;
+
+            case "click2":
+                beep.PlayOneShot(clickTwo);
+                break;
+
+            case "click1":
+                beep.PlayOneShot(clickOne);
+                break;
+
+            case "ball":
+                beep.PlayOneShot(floorBall);
+                break;
+
+
+        }
+    }*/
 }
