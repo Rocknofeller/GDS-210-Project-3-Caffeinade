@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     //all the sound effects except background music
 
-    /*
+    
 
     public static AudioClip timerSound, floorClip, clickTwo, floorBall, clickOne, giggles;
     static AudioSource beep;
@@ -47,5 +47,5 @@ public class AudioManager : MonoBehaviour
 
 
         }
-    }*/
+    }
 }
