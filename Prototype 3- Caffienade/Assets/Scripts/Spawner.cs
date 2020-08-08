@@ -16,17 +16,21 @@ public class Spawner : MonoBehaviour
         if (ShouldSpawn())
         {
             Spawn();
+            
         }
     }
 
     private void Spawn()
     {
+        
         nextSpawnTime = Time.time + spawnDelay;
         Instantiate(customerPrefab, transform.position, transform.rotation);
+        
     }
 
     private bool ShouldSpawn()
     {
         return Time.time >= nextSpawnTime;
+        
     }
 }
