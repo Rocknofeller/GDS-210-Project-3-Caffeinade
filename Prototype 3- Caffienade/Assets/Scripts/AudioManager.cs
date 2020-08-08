@@ -8,11 +8,11 @@ public class AudioManager : MonoBehaviour
 
     
 
-    public static AudioClip timerSound, floorClip, clickTwo, floorBall, clickOne, giggles;
+    public static AudioClip Cash, floorClip, clickTwo, floorBall, clickOne, giggles;
     static AudioSource beep;
     void Start()
     {
-        timerSound = Resources.Load<AudioClip>("Alarm");
+        Cash = Resources.Load<AudioClip>("CashRegister");
         floorClip = Resources.Load<AudioClip>("floor");
         clickTwo = Resources.Load<AudioClip>("click2");
         clickOne = Resources.Load<AudioClip>("click1");
@@ -25,8 +25,8 @@ public class AudioManager : MonoBehaviour
     {
         switch (clip)
         {
-            case "Alarm":
-                beep.PlayOneShot(timerSound);
+            case "CashRegister":
+                beep.PlayOneShot(Cash);
                 break;
 
             case "floor":
